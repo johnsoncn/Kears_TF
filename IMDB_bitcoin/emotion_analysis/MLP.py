@@ -39,17 +39,20 @@ if __name__ == "__main__":
     result = [len(word) for word in x]
     print("mean  %f std %f" % (np.mean(result), np.std(result)))
 
-    plt.subplot(121)
-    plt.boxplot(result)
-    plt.subplot(122)
-    plt.hist(result)
-    plt.show()
+    # plt.subplot(121)
+    # plt.boxplot(result)
+    # plt.subplot(122)
+    # plt.hist(result)
+    # plt.show()
 
     # 数据填充
     x_train = sequence.pad_sequences(x_train, maxlen=MAX_WORDS)
     x_validation = sequence.pad_sequences(x_validation, maxlen=MAX_WORDS)
 
     model = create_model()
-    model.fit(x_train, y_train, validation_data=(x_validation, y_validation), batch_size=BATCH_SIZE, epochs=EPOCHS)
-    scores = model.evaluate(x_validation, y_validation, verbose=0)
+    model.fit(x_train, y_train, validation_data=(x_validation, y_validation), batch_size=BATCH_SIZE, epochs=EPOCHS,verbose=1)
+    print("----------start evaluation-------------")
+    scores = model.evaluate(x_validation, y_validation, verbose=1)
     print(scores)
+
+    model.save("emotion_MLP.h5")
