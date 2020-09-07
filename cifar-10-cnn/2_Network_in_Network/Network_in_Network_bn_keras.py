@@ -25,7 +25,6 @@ if('tensorflow' == K.backend()):
     config = tf.ConfigProto()
     config.gpu_options.allow_growth = True
     sess = tf.Session(config=config)
-    
 
 def color_preprocessing(x_train,x_test):
     x_train = x_train.astype('float32')

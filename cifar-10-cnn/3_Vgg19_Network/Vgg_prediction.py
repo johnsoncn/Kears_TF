@@ -21,10 +21,10 @@ while True:
 	try:
 		img = Image.open(img_path)
 		ori_w,ori_h = img.size
-		new_w = 224.0;
-		new_h = 224.0;
+		new_w = 224.0
+		new_h = 224.0
 		if ori_w > ori_h:
-			bs = 224.0 / ori_h;
+			bs = 224.0 / ori_h
 			new_w = ori_w * bs
 			weight = int(new_w)
 			height = int(new_h)
@@ -32,7 +32,7 @@ while True:
 			region = ( weight / 2 - 112, 0, weight / 2 + 112, height)
 			img = img.crop( region )
 		else:
-			bs = 224.0 / ori_w;
+			bs = 224.0 / ori_w
 			new_h = ori_h * bs
 			weight = int(new_w)
 			height = int(new_h)
